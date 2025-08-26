@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
 type Props = {
@@ -12,7 +12,7 @@ export default function TabIcon({ focused, title, iconName }: Props) {
     if (focused) {
         return (
             <View style={styles.activePill}>
-                <Ionicons name={iconName} size={20} color="#EDEDF8" style={styles.icon} />
+                <Ionicons name={iconName} size={20} color="#EDEDF8" style={{ marginRight: 8 }} />
                 <Text style={styles.activeText}>{title}</Text>
             </View>
         );
@@ -20,29 +20,28 @@ export default function TabIcon({ focused, title, iconName }: Props) {
 
     return (
         <View style={styles.inactiveWrap}>
-            <Ionicons name={iconName} size={20} color="#A8B5DB" />
+            <Ionicons name={iconName} size={20} color="#9CA3AF" />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     activePill: {
-        flexDirection: 'row',
+        flexDirection: "row",
         minWidth: 112,
-        minHeight: 52, // matches the bar height vibe
+        minHeight: 52,
         marginTop: 4,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         borderRadius: 999,
-        backgroundColor: 'rgba(255,255,255,0.10)',
+        backgroundColor: "rgba(255,255,255,0.10)",
         paddingHorizontal: 12,
         paddingVertical: 8,
     },
-    icon: { marginRight: 8 },
-    activeText: { color: '#EDEDF8', fontSize: 14, fontWeight: '600' },
+    activeText: { color: "#EDEDF8", fontSize: 14, fontWeight: "600" },
     inactiveWrap: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         marginTop: 4,
         borderRadius: 999,
     },

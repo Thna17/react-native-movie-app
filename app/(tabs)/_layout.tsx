@@ -1,64 +1,72 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import TabIcon from '../../components/TabIcon';
-
+import { icons } from "@/constants/icons";
+import { images } from "@/constants/images";
 export default function TabsLayout() {
     return (
         <Tabs
             screenOptions={{
-                headerShown: false,
                 tabBarShowLabel: false,
                 tabBarItemStyle: {
-                    height: '100%',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    width: "100%",
+                    height: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
                 },
                 tabBarStyle: {
-                    backgroundColor: '#0F0D23',
+                    backgroundColor: "#0F0D23",
                     borderRadius: 50,
                     marginHorizontal: 20,
                     marginBottom: 36,
                     height: 52,
-                    position: 'absolute',
-                    overflow: 'hidden',
+                    position: "absolute",
+                    overflow: "hidden",
                     borderWidth: 1,
-                    borderColor: '#0F0D23',
+                    borderColor: "#0F0D23",
                 },
             }}
         >
             <Tabs.Screen
                 name="index"
                 options={{
-                    title: 'Home',
+                    title: "index",
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabIcon focused={focused} title="Home" iconName="home-outline" />
+                        <TabIcon focused={focused} iconName={icons.home} title="Home" />
                     ),
                 }}
             />
+
             <Tabs.Screen
                 name="search"
                 options={{
-                    title: 'Search',
+                    title: "Search",
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabIcon focused={focused} title="Search" iconName="search" />
+                        <TabIcon focused={focused} iconName={icons.search} title="Search" />
                     ),
                 }}
             />
+
             <Tabs.Screen
-                name="saved"
+                name="save"
                 options={{
-                    title: 'Saved',
+                    title: "Save",
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabIcon focused={focused} title="Saved" iconName="bookmark-outline" />
+                        <TabIcon focused={focused} iconName={icons.save} title="Save" />
                     ),
                 }}
             />
+
             <Tabs.Screen
                 name="profile"
                 options={{
-                    title: 'Profile',
+                    title: "Profile",
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabIcon focused={focused} title="Profile" iconName="person-outline" />
+                        <TabIcon focused={focused} iconName={icons.person} title="Profile" />
                     ),
                 }}
             />
