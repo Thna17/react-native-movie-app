@@ -1,25 +1,31 @@
 export const TMDB_CONFIG = {
     BASE_URL: 'https://api.themoviedb.org/3',
-    API_KEY: process.env.EXPO_PUBLIC_API_KEY,
+    API_KEY: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZmNmZDQyNzRiMmM2OWYyOWMwODFjMmEwNzQyMDhiZiIsIm5iZiI6MTc1NjIyNDU3OS4wMzgsInN1YiI6IjY4YWRkYzQzYWM4YjY1MDdhNThkMmM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.y1f3JTOaw73D4mLAg20Wkbv5wLhlS6dQIForajkNi68",
     headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env.EXPO_PUBLIC_API_KEY}`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZmNmZDQyNzRiMmM2OWYyOWMwODFjMmEwNzQyMDhiZiIsIm5iZiI6MTc1NjIyNDU3OS4wMzgsInN1YiI6IjY4YWRkYzQzYWM4YjY1MDdhNThkMmM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.y1f3JTOaw73D4mLAg20Wkbv5wLhlS6dQIForajkNi68`,
     }
 }
 
-export const fetchMovies = async({ query } : { query : string}) => {
-    const endpoint = query ? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}` :  `${TMDB_CONFIG.BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`;
+export const fetchMovies = async ({ query }: { query: string }) => {
+    const endpoint = query
+        ? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}&language=en-US&page=1&include_adult=false`
+        : `${TMDB_CONFIG.BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`;
 
     const response = await fetch(endpoint, {
-        method: 'GET',
-        headers: TMDB_CONFIG.headers,
-    })
+        headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${TMDB_CONFIG.API_KEY}`, // use your v4 token here
+        },
+    });
 
     if (!response.ok) {
-        throw new Error('Could not fetch movie data', response.statusText);
+        throw new Error(`Could not fetch movie data: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
     return data.results;
+};
 
-}
+
+
