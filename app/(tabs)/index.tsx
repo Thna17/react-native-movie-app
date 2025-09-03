@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Image, ScrollView, ActivityIndicator, Text, FlatList} from 'react-native';
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
-import SearchBar from '../../components/SearchBar'
+import SearchBar from '@/components/SearchBar'
 import {useRouter} from "expo-router";
 import {fetchMovies} from "@/services/api";
 import useFetch from "@/services/useFetch";
@@ -99,8 +99,6 @@ export default function HomeScreen() {
                         </View>
                     )
                 }
-
-
             </ScrollView>
         </View>
     );
